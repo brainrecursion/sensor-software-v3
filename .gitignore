@@ -30,3 +30,5 @@
 
 # Debug files
 *.dSYM/
+/sensor.X/build/PIC16LF1509/
+/sensor.X/dist/PIC16LF1509/
