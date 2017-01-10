@@ -25,10 +25,8 @@ void sleep (const uint8_t interval);
 #define INPUT 1
 #define OUTPUT 0
 
-//#define RF_PWR_PIN_DIR TRISC6
-//#define RF_PWR_PIN LATC6
-#define RF_PWR_PIN_DIR TRISA2
-#define RF_PWR_PIN LATA2
+#define RF_PWR_PIN_DIR TRISC6
+#define RF_PWR_PIN LATC6
 
 #define LED_RED LATC2
 #define LED_RED_DIR TRISC2
@@ -40,13 +38,7 @@ void sleep (const uint8_t interval);
 #define LDR_DATA_DIR TRISC3
 
 #define DHT_PIN_DIR TRISC4
-#define DHT_PIN LATC4
-
-#define SDA_TRIS  TRISC4
-#define SCL_TRIS  TRISA5
-#define SDA       LATC4
-#define SDA_PIN   RC4
-#define SCL       LATA5
+#define DHT_PIN RC4
 
 enum {
     WDT_1_MS = 0b00000,

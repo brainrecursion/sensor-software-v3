@@ -15,9 +15,6 @@
 #include "system.h"
 #include "wl_module.h"
 
-Long_Payload long_payload = 0;
-Short_Payload short_payload = 0;
-
 /******************************************************************************/
 /* User Functions                                                             */
 /******************************************************************************/

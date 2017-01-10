@@ -25,10 +25,7 @@
  * _PIC12 */
 #ifndef _PIC12
 
-#define LED_RED LATC2
-#define LED_RED_DIR TRISC2
-#define LED_GRN LATC5
-#define LED_GRN_DIR TRISC5
+
 
 void interrupt isr(void) {
     /* This code stub shows general interrupt handling.  Note that these

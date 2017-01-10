@@ -89,10 +89,6 @@ extern void wl_module_rx_config(void)
     wl_module_config_register(RF_CH,wl_module_CH);
 	// Set data speed & Output Power configured in wl_module.h
 	wl_module_config_register(RF_SETUP,wl_module_RF_SETUP);
-    wl_module_config_register(SETUP_AW,SETUP_AW_3BYTES);
-    
-    wl_module_config_register(FEATURE,wl_module_FEATURE);
-    wl_module_config_register(DYNPD,0x3f);
 	//Enable all RX Data-Pipes
 	wl_module_config_register(EN_RXADDR, EN_RXADDR_ERX_ALL);
 	//Set RX_Address Pipe 0
@@ -122,7 +118,7 @@ extern void wl_module_rx_config(void)
     // Start receiver
     PTX = 0;        // Start in receiving mode
     RX_POWERUP;     // Power up in receiving mode
-    wl_module_CE_hi;     // Listening for packets
+    wl_module_CE_hi;     // Listening for pakets
 }
 
 // Sets the wl-module as one of the six sender. Define for every sender a unique Number (wl_module_TX_NR_x)
@@ -466,14 +462,13 @@ void wl_module_write_register(unsigned char reg, unsigned char * value, unsigned
 }
 
 
-unsigned char wl_module_send(unsigned char * value, unsigned char len)
+uint8_t wl_module_send(unsigned char * value, unsigned char len)
 // Sends a data package to the default address. Be sure to send the correct
 // amount of bytes as configured as payload on the receiver.
 {
-    
+    uint8_t err=0;
     //while (PTX) {}                  // Wait until last paket is send
     int i = 0;
-    unsigned char err = 0;
 
     wl_module_CE_lo;
 
@@ -507,17 +502,15 @@ unsigned char wl_module_send(unsigned char * value, unsigned char len)
 
         if (status & (1 << MAX_RT)) { // IRQ: Package has not been sent, send again
             wl_module_config_register(STATUS, status); // Clear Bit
-            long_payload.rf_max_rt++;
+            err=1;
             PTX = 0; // give up
-            err = 1;
         }
         
         /* timeout incase something goes wrong */
         if (i>100){
             wl_module_config_register(STATUS, status); // Clear Bit
-            long_payload.rf_timeout++;
+            err=1;
             PTX = 0; // give up
-            err = 1;
         }
     }
    wl_module_CE_lo;

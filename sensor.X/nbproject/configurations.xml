@@ -9,8 +9,7 @@
       <itemPath>nRF24L01.h</itemPath>
       <itemPath>spi.h</itemPath>
       <itemPath>wl_module.h</itemPath>
-      <itemPath>i2c.h</itemPath>
-      <itemPath>sht21.h</itemPath>
+      <itemPath>dht22_new.h</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -20,10 +19,9 @@
       <itemPath>main.c</itemPath>
       <itemPath>system.c</itemPath>
       <itemPath>user.c</itemPath>
+      <itemPath>dht22_new.c</itemPath>
       <itemPath>spi.c</itemPath>
       <itemPath>wl_module.c</itemPath>
-      <itemPath>sht21.c</itemPath>
-      <itemPath>i2c.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -45,7 +43,7 @@
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.35</languageToolchainVersion>
-        <platform>2</platform>
+        <platform>3</platform>
       </toolsSet>
       <compileType>
         <linkerTool>
@@ -138,7 +136,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

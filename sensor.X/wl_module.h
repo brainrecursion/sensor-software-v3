@@ -35,6 +35,7 @@
 #include <xc.h>
 #include "spi.h"
 #include "nRF24L01.h"
+#include <stdint.h>
 
 extern volatile unsigned char PTX;
 
@@ -76,7 +77,7 @@ extern volatile unsigned char PTX;
 // Public standard functions
 extern void wl_module_init(void);
 extern void wl_module_config(void);
-extern unsigned char wl_module_send(unsigned char * value, unsigned char len);
+extern uint8_t wl_module_send(unsigned char * value, unsigned char len);
 extern void wl_module_set_RADDR(unsigned char * adr, unsigned char size);
 extern void wl_module_set_TADDR(unsigned char * adr, unsigned char size);
 extern unsigned char wl_module_data_ready(void);
