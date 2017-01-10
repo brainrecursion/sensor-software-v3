@@ -77,7 +77,7 @@ void wl_module_config(void)
     // Start receiver
     PTX = 0;        // Start in receiving mode
     RX_POWERUP;     // Power up in receiving mode
-    wl_module_CE_hi;     // Listening for pakets
+    wl_module_CE_hi;     // Listening for packets
 }
 
 extern void wl_module_rx_config(void)
@@ -507,7 +507,6 @@ unsigned char wl_module_send(unsigned char * value, unsigned char len)
 
         if (status & (1 << MAX_RT)) { // IRQ: Package has not been sent, send again
             wl_module_config_register(STATUS, status); // Clear Bit
-            long_payload.rf_max_rt++;
             PTX = 0; // give up
             err = 1;
         }
@@ -515,7 +514,6 @@ unsigned char wl_module_send(unsigned char * value, unsigned char len)
         /* timeout incase something goes wrong */
         if (i>100){
             wl_module_config_register(STATUS, status); // Clear Bit
-            long_payload.rf_timeout++;
             PTX = 0; // give up
             err = 1;
         }
